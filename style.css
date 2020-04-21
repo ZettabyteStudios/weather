@@ -1,0 +1,83 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+background-color: #FFE53B;
+background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+
+	font-family: sans-serif;
+	color: #fff;
+}
+#location{
+    display:table;
+    margin:auto; /* if you want header be center in it's parent */
+}
+#location div {
+  display:table-cell;
+}
+.location-timezone{
+
+    text-align: justify;
+    font-size: 40px ;
+	padding-right: 20vh;
+
+}
+.country-code{
+
+    text-align: justify;
+    font-size: 30px ;
+	
+
+}
+.city{
+
+    text-align: justify;
+    font-size: 30px ;
+    padding-left: 20vh ;
+
+
+}
+
+.temperature{
+	height: 30vh;
+	width: 50%;
+    font-size: 30px ;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;	
+	flex-direction: column;
+}
+
+.degree-section{
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+.degree-section span {
+	margin: 1px;
+	font-size: 30px;
+    font-weight: bold ;
+
+}
+.degree-section h2 {
+    font-size: 40px ;
+	
+}
+
+.temperature-description {
+    font-size: 30px ;
+    letter-spacing: 1px ;
+    font-family: sans-serif ;
+    font-weight: bold ;
+    padding-bottom: 3vh ;
+    
+}
+
