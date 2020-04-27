@@ -5,6 +5,24 @@ window.addEventListener('load', ()=> {
     let temperatureDegree = document.getElementsByTagName('.temperature-deree');
     let locationTimezone = document.querySelector('.location-timezone');
     
+    if(navigator.onLine){
+ } else {
+  alert('offline');
+ }
+
+ if(navigator.geolocation){
+
+ }else{
+    alert('Location Unavailable');
+ }
+ navigator.geolocation.watchPosition(function(position) {
+ 
+  },
+  function(error) {
+    if (error.code == error.PERMISSION_DENIED)
+      alert("please reload the page and allow location Access");
+  });
+
 
     
     if(navigator.geolocation){
@@ -39,11 +57,8 @@ window.addEventListener('load', ()=> {
             var element = document.getElementById("temperature-degree");
             element.innerHTML = tem ;
             console.log(icon);
-  
-       
-                   
-        const skycons = new Skycons({"color": "white"});
-            
+
+                    const skycons = new Skycons({"color": "white"});
              function CLEAR_DAY(){
                 skycons.set("icon1", Skycons.CLEAR_DAY);
                 
@@ -79,45 +94,51 @@ window.addEventListener('load', ()=> {
             function FOG(){
                 skycons.set("icon1", Skycons.FOG);
             }
-    
-               if(icon == 'c01d'){
-                   CLEAR_DAY();
-               }
-           else if(icon == 'c01n'){
-                CLEAR_NIGHT();
-            }
+
+            switch(icon){
+
+     case 'c01d' :
+                CLEAR_DAY();
+                break;
+     case 'c01n' :
+             CLEAR_NIGHT();
+             break;
+            
            
-            else if(icon == 'a06d'||icon == 'a06n'||icon == 'a05n'||icon == 'a05d'){
+     case  'a06d'|| 'a06n'|| 'a05n'|| 'a05d'||'a01d'||'a01n'||'a04n'||'a04d'||'a03n'||'a03d'||'a02n'||'a02d' :
                 FOG();
-            }
-            else if(icon == 'c02d'||icon == 'c03d'||icon == 'c04d'){
+                break;
+            
+     case 'c02d'||'c03d' :
                 PARTLY_CLOUDY_DAY();
-            }
-            else if(icon == "c02n"||icon == 'c03n'||icon == 'c04n'){
+                break;
+            
+     case   'c02n'|| 'c03n' :
                 PARTLY_CLOUDY_NIGHT();
-            }
-            else if(icon == 'c04d'||icon == 'c04d'){
-                CLOUDY();
-            }
-           else if(icon == "r02d"||icon == "r02n"||icon == "r03dn"||icon == "r03n"||icon == "f01d"||icon == "f01n"||icon == "r04n"||icon == "r04d"||icon == "r04d"||icon == "r04d"){
+                break;
+            
+      
+            
+      case  'c04d'||'c04n' || 'r02d' ||'r02n'||'r03dn'||'r03n'||'f01d'||'f01n'||'r04n'||'r04d'||'r04d'||'r04d' :
                 RAIN();
-            }
-            else if(icon == "r01d"||icon == "r01n"||icon == "a01d"||icon == "a01n"||icon == "u00d"||icon == "u00n"){
+                break;
+            
+       case 'r01d'||'r01n'||'u00d'||'u00n' :
                 SLEET();
-            }
-            else if(icon == "s02d"||icon == "s02n"||icon == "s03d"||icon == "s03n"||icon == "s04n"||icon == "s04d"||icon == "s01d"||icon == "s01n"){
+                break;
+            
+        case 's02d'||'s02n'||'s03d'||'s03n'||'s04n'||'s04d'||'s01d'||'s01n' :
                 SNOW();
-            }
-            else    if(json.data["0"].weather.icon = "a04n","a04d","a03n","a03d","a02n","a02d"){
-
+                break;
+            
+        case  's05d'||'s05n':
                   WIND();
-   
-
-            }
-            else{
+                  break;
+            
+            default :
                 PARTLY_CLOUDY_DAY();
+                break;
             }
-
            
             skycons.play();
  
@@ -127,6 +148,7 @@ window.addEventListener('load', ()=> {
             
         });
 }
+
     
   
         
